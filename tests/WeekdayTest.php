@@ -52,7 +52,6 @@ class WeekdayTest extends TestCase
     {
         $item = Weekday::Monday->toSelectItem();
 
-        $this->assertIsArray($item);
         $this->assertArrayHasKey('label', $item);
         $this->assertArrayHasKey('text', $item);
         $this->assertArrayHasKey('value', $item);
@@ -79,7 +78,6 @@ class WeekdayTest extends TestCase
     {
         $array = Weekday::Monday->toArray();
 
-        $this->assertIsArray($array);
         $this->assertArrayHasKey('value', $array);
         $this->assertArrayHasKey('label', $array);
     }
@@ -102,7 +100,6 @@ class WeekdayTest extends TestCase
     {
         $options = Weekday::genOptions();
 
-        $this->assertIsArray($options);
         $this->assertCount(7, $options);
 
         // 验证第一个选项的结构和值
