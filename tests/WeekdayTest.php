@@ -1,30 +1,23 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tourze\GBT7408\Tests;
 
-use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Tourze\GBT7408\Weekday;
+use Tourze\PHPUnitEnum\AbstractEnumTestCase;
 
-class WeekdayTest extends TestCase
+/**
+ * @internal
+ */
+#[CoversClass(Weekday::class)]
+final class WeekdayTest extends AbstractEnumTestCase
 {
-    /**
-     * 测试枚举值是否具有正确的值
-     */
-    public function testEnumValues_correctValues(): void
-    {
-        $this->assertSame('01', Weekday::Monday->value);
-        $this->assertSame('02', Weekday::Tuesday->value);
-        $this->assertSame('03', Weekday::Wednesday->value);
-        $this->assertSame('04', Weekday::Thursday->value);
-        $this->assertSame('05', Weekday::Friday->value);
-        $this->assertSame('06', Weekday::Saturday->value);
-        $this->assertSame('07', Weekday::Sunday->value);
-    }
-
     /**
      * 测试枚举的 cases() 方法是否返回所有 7 个星期值
      */
-    public function testEnumCases_returnAllSevenDays(): void
+    public function testEnumCasesReturnAllSevenDays(): void
     {
         $cases = Weekday::cases();
         $this->assertCount(7, $cases);
@@ -32,23 +25,9 @@ class WeekdayTest extends TestCase
     }
 
     /**
-     * 测试 getLabel() 方法是否返回正确的中文标签
-     */
-    public function testGetLabel_returnsCorrectChineseLabel(): void
-    {
-        $this->assertSame('星期一', Weekday::Monday->getLabel());
-        $this->assertSame('星期二', Weekday::Tuesday->getLabel());
-        $this->assertSame('星期三', Weekday::Wednesday->getLabel());
-        $this->assertSame('星期四', Weekday::Thursday->getLabel());
-        $this->assertSame('星期五', Weekday::Friday->getLabel());
-        $this->assertSame('星期六', Weekday::Saturday->getLabel());
-        $this->assertSame('星期日', Weekday::Sunday->getLabel());
-    }
-
-    /**
      * 测试 toSelectItem() 方法是否返回包含正确键的数组
      */
-    public function testToSelectItem_returnsCorrectStructure(): void
+    public function testToSelectItemReturnsCorrectStructure(): void
     {
         $item = Weekday::Monday->toSelectItem();
 
@@ -61,7 +40,7 @@ class WeekdayTest extends TestCase
     /**
      * 测试 toSelectItem() 方法返回的数组是否包含正确的值
      */
-    public function testToSelectItem_containsCorrectValues(): void
+    public function testToSelectItemContainsCorrectValues(): void
     {
         $item = Weekday::Monday->toSelectItem();
 
@@ -74,7 +53,7 @@ class WeekdayTest extends TestCase
     /**
      * 测试 toArray() 方法是否返回包含正确键的数组
      */
-    public function testToArray_returnsCorrectStructure(): void
+    public function testToArrayReturnsCorrectStructure(): void
     {
         $array = Weekday::Monday->toArray();
 
@@ -85,7 +64,7 @@ class WeekdayTest extends TestCase
     /**
      * 测试 toArray() 方法返回的数组是否包含正确的值
      */
-    public function testToArray_containsCorrectValues(): void
+    public function testToArrayContainsCorrectValues(): void
     {
         $array = Weekday::Monday->toArray();
 
@@ -96,7 +75,7 @@ class WeekdayTest extends TestCase
     /**
      * 测试 genOptions() 方法是否返回包含所有 7 个星期的数组
      */
-    public function testGenOptions_returnsAllSevenDays(): void
+    public function testGenOptionsReturnsAllSevenDays(): void
     {
         $options = Weekday::genOptions();
 
@@ -123,7 +102,7 @@ class WeekdayTest extends TestCase
     /**
      * 测试设置环境变量后 genOptions() 方法是否正确过滤选项
      */
-    public function testGenOptions_withEnvironmentVariable(): void
+    public function testGenOptionsWithEnvironmentVariable(): void
     {
         // 保存原始环境变量
         $originalEnv = $_ENV;
