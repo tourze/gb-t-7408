@@ -3,7 +3,7 @@
   "description": "GB/T 7408",
   "license": "MIT",
   "require": {
-    "tourze/enum-extra": "0.1.*"
+    "tourze/enum-extra": "1.*"
   },
   "require-dev": {
     "phpstan/phpstan": "^2.1",
